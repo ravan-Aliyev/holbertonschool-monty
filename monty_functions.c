@@ -19,6 +19,10 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number)
 		new->n = atoi(opcode);
 		new->next = *stack;
 		new->prev = NULL;
+
+		if (*stack != NULL)
+			(*stack)->prev = new;
+		*stack = new;
 	}
 	else
 	{
@@ -26,10 +30,6 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number)
 		free(new);
 		exit(EXIT_FAILURE);
 	}
-
-	if (*stack != NULL)
-		(*stack)->prev = new;
-	*stack = new;
 }
 /**
  * monty_pall - execute monty pull function.

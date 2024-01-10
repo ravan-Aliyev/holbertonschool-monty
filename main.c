@@ -31,7 +31,7 @@ int main(int ac, char **av)
 		opcode = strtok(line, " \n\t");
 		if (opcode == NULL)
 			continue;
-		get_function(fd, opcode, count, &stack);
+		get_function(fd, opcode, count, &stack, line);
 	}
 
 	fclose(fd);

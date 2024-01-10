@@ -35,7 +35,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void get_function(FILE *fd, char *opcode, int count, stack_t **stack);
+void get_function(FILE *fd, char *opcode, int count,
+		stack_t **stack, char *line);
 void monty_push(char *opcode, stack_t **stack, unsigned int line_number);
 void monty_pall(stack_t **stack, unsigned int line_number);
 int check_num(char *opcode);
