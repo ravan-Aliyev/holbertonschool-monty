@@ -37,6 +37,5 @@ int main(int ac, char **av)
 	fclose(fd);
 	free_stack(stack);
 	free(line);
-	free(opcode);
 	return (0);
 }
