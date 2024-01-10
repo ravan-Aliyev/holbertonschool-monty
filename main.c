@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * main - execute monty code.
  * @ac: argument counter.
@@ -31,11 +31,12 @@ int main(int ac, char **av)
 		opcode = strtok(line, " \n\t");
 		if (opcode == NULL)
 			continue;
-		get_function(opcode, count, &stack);
+		get_function(fd, opcode, count, &stack);
 	}
 
 	fclose(fd);
 	free_stack(stack);
 	free(line);
+	free(opcode);
 	return (0);
 }

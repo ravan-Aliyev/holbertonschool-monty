@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * monty_push - execute monty push function.
  * @opcode: operation code.
@@ -14,7 +14,7 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (check_num(opcode) == 1 && opcode != NULL)
+	if (opcode != NULL)
 	{
 		new->n = atoi(opcode);
 		new->next = *stack;
