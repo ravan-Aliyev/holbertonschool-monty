@@ -3,26 +3,25 @@
  * get_function - get function according to the opcode.
  * @opcode: operation code.
  * @count: show us which line we are.
- * @line: line of monty code.
+ * @stack: stack.
  */
-void get_function(char *opcode, int *count, char *line)
+void get_function(char *opcode, int count, stack_t **stack)
 {
-	int i;
-	instruction_t opcedes[] = 
-	{
+	int i = 0;
+	instruction_t opcodes[] = {
 		{"pall", monty_pall},
 		{NULL, NULL},
 	};
 
 	if (strcmp(opcode, "push") == 0)
-		monty_push(strtok(NULL, " \n\t\r"), &stack, count);
+		monty_push(strtok(NULL, " \n\t\r"), stack, count);
 	else
 	{
 		while (opcodes[i].opcode != NULL)
 		{
-			if (strcmp(opcodes[i].opcode, opcode))
+			if (strcmp(opcodes[i].opcode, opcode) == 0)
 			{
-				opcodes[i].f(&stack, count);
+				opcodes[i].f(stack, count);
 				break;
 			}
 			i++;
@@ -33,5 +32,4 @@ void get_function(char *opcode, int *count, char *line)
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
 		exit(EXIT_FAILURE);
 	}
-	free(opcode);
 }

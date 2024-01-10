@@ -11,9 +11,9 @@ int check_num(char *opcode)
 	if (opcode == NULL)
 		return (0);
 
-	while (opcode[i] != NULL)
+	while (opcode[i] != '\0')
 	{
-		if (opcode[0] == "-")
+		if (opcode[0] == '-')
 		{
 			i++;
 			continue;
@@ -24,4 +24,19 @@ int check_num(char *opcode)
 	}
 
 	return (1);
+}
+/**
+ * free_stack - freeeing stack.
+ * @stack: stack.
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *cur;
+
+	while (stack)
+	{
+		cur = stack->next;
+		free(stack);
+		stack = cur;
+	}
 }

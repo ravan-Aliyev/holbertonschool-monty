@@ -2,8 +2,9 @@
 #define MONTY_HEADER
 #include <stdio.h>
 #include <string.h>
-#include <unstd.h>
-
+#include <unistd.h>
+#include <stdlib.h>
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -15,9 +16,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -30,14 +31,13 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-FILE *fd;
-stack_t *stack = NULL;
-
-void get_function(char *opcode, int count, char *line);
-void monty_push(char *opcode, stack_t **stack, int line_number);
+void get_function(char *opcode, int count, stack_t **stack);
+void monty_push(char *opcode, stack_t **stack, unsigned int line_number);
 void monty_pall(stack_t **stack, unsigned int line_number);
 int check_num(char *opcode);
+void free_stack(stack_t *stack);
+#endif
