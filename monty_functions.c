@@ -42,8 +42,7 @@ void monty_pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	while (cur)
 	{
-		if (cur != NULL)
-			printf("%d\n", cur->n);
+		printf("%d\n", cur->n);
 		cur = cur->next;
 	}
 }

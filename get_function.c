@@ -18,6 +18,7 @@ void get_function(char *opcode, int count, stack_t **stack)
 	{
 		value = strtok(NULL, " \n\t\r");
 		monty_push(value, stack, count);
+		return;
 	}
 	else
 	{
