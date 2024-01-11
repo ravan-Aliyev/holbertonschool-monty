@@ -18,7 +18,6 @@ void get_function(char *opcode, int count, stack_t **stack)
 	{
 		value = strtok(NULL, " \n\t\r");
 		monty_push(value, stack, count);
-		return;
 	}
 	else
 	{
@@ -32,9 +31,6 @@ void get_function(char *opcode, int count, stack_t **stack)
 			i++;
 		}
 	}
-	if (opcodes[i].opcode == NULL)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
-		exit(EXIT_FAILURE);
-	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
+	exit(EXIT_FAILURE);
 }

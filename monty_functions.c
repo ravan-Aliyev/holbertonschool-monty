@@ -26,7 +26,7 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "L%d: usege: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -38,6 +38,9 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number)
 void monty_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *cur = *stack;
+
+	if (stack == NULL)
+		return;
 
 	(void)line_number;
 	while (cur)
