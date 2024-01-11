@@ -40,4 +40,6 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number);
 void monty_pall(stack_t **stack, unsigned int line_number);
 int check_num(char *opcode);
 void free_stack(stack_t *stack);
+void pint(stack_t **stack, unsigned int line_number);
+
 #endif
