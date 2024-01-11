@@ -10,7 +10,7 @@ int main(int ac, char **av)
 {
 	FILE *fd;
 	stack_t *stack = NULL;
-	char *line = NULL, *opcode;
+	char *line = NULL, *opcode = NULL;
 	size_t n = 0;
 	int count = 0;
 
@@ -25,17 +25,18 @@ int main(int ac, char **av)
 		fprintf(stderr, "Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&line, &n, fd) != -1)
+	while (getline(&line, &n, fd) != EOF)
 	{
 		count++;
 		opcode = strtok(line, " \n\t");
-		if (opcode == NULL)
-			continue;
-		get_function(fd, opcode, count, &stack, line);
+		if (opcode != NULL)
+		{
+			get_function(opcode, count, &stack);
+		}
 	}
 
 	fclose(fd);
 	free_stack(stack);
 	free(line);
-	return (0);
+	return (EXIT_SUCCESS);
 }

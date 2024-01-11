@@ -7,8 +7,7 @@
  * @line: line.
  * @stack: stack.
  */
-void get_function(FILE *fd, char *opcode, int count,
-		stack_t **stack, char *line)
+void get_function(char *opcode, int count, stack_t **stack)
 {
 	int i = 0;
 	char *value = NULL;
@@ -20,15 +19,6 @@ void get_function(FILE *fd, char *opcode, int count,
 	if (strcmp(opcode, "push") == 0)
 	{
 		value = strtok(NULL, " \n\t\r");
-		if (value == NULL
-		    || check_num(value) != 0)
-		{
-			fclose(fd);
-			free_stack(*stack);
-			free(line);
-			fprintf(stderr, "L%d usage: push integer", count);
-			exit(EXIT_FAILURE);
-		}
 		monty_push(value, stack, count);
 	}
 	else
@@ -38,7 +28,7 @@ void get_function(FILE *fd, char *opcode, int count,
 			if (strcmp(opcodes[i].opcode, opcode) == 0)
 			{
 				opcodes[i].f(stack, count);
-				break;
+				return;
 			}
 			i++;
 		}
@@ -46,9 +36,6 @@ void get_function(FILE *fd, char *opcode, int count,
 	if (opcodes[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
-		free_stack(*stack);
-		free(line);
-		fclose(fd);
 		exit(EXIT_FAILURE);
 	}
 }

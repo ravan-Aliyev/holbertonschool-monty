@@ -14,7 +14,7 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (opcode != NULL)
+	if (opcode != NULL && check_num(opcode) == 1)
 	{
 		new->n = atoi(opcode);
 		new->next = *stack;
@@ -27,7 +27,6 @@ void monty_push(char *opcode, stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: usege: push integer\n", line_number);
-		free(new);
 		exit(EXIT_FAILURE);
 	}
 }
