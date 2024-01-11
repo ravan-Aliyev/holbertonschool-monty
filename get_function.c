@@ -14,8 +14,8 @@ void get_function(char *opcode, int count, stack_t **stack)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
-/**		{"add", add},
-		{"nop", nop}, */
+		{"add", add},
+/**		{"nop", nop}, */
 		{NULL, NULL},
 	};
 
