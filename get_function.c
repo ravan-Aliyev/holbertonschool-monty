@@ -12,6 +12,10 @@ void get_function(char *opcode, int count, stack_t **stack)
 	instruction_t opcodes[] = {
 		{"pall", monty_pall},
 		{"pint", pint},
+		{"pop", pop},
+/**		{"swap", swap},
+		{"add", add},
+		{"nop", nop}, */
 		{NULL, NULL},
 	};
 
