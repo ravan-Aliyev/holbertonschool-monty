@@ -13,8 +13,8 @@ void get_function(char *opcode, int count, stack_t **stack)
 		{"pall", monty_pall},
 		{"pint", pint},
 		{"pop", pop},
-/**		{"swap", swap},
-		{"add", add},
+		{"swap", swap},
+/**		{"add", add},
 		{"nop", nop}, */
 		{NULL, NULL},
 	};
