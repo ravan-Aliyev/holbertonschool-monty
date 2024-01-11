@@ -3,8 +3,6 @@
  * get_function - get function according to the opcode.
  * @opcode: operation code.
  * @count: show us which line we are.
- * @fd: file direction.
- * @line: line.
  * @stack: stack.
  */
 void get_function(char *opcode, int count, stack_t **stack)
